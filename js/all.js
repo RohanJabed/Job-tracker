@@ -107,7 +107,7 @@ document.addEventListener("click", function (event) {
             const rejectedCount = document.getElementById("rejected-card");
             rejectedCount.innerText = parseInt(rejectedCount.innerText) - 1;
         }
-        if(clickedCard.closest("#All")){
+        if(clickedCard.closest("#all-part")){
             const jobs = document.getElementById("jobs");
             const currentCount = parseInt(jobs.innerText.split(' ')[1]);
             jobs.innerText = `Jobs ${currentCount - 1}`;
