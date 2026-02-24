@@ -10,7 +10,7 @@ for (const button of interviewButtons) {
         originalStatus.innerText = "Interview";
 
         const interview = document.getElementById("interview-card");
-        interview.innerText = Number(interview.innerText) + 1;
+        interview.innerText = parseInt(interview.innerText) + 1;
 
         const interviewSection = document.getElementById("interview");
 
@@ -18,7 +18,7 @@ for (const button of interviewButtons) {
         const clonedCard = clickedCard.cloneNode(true);
         interviewSection.appendChild(clonedCard);
 
-        // Disable both buttons so they can't be clicked again
+        // Disable both buttons
         button.disabled = true;
         const rejectedBtn = clickedCard.querySelector(".rejected-btn");
         rejectedBtn.disabled = true;
@@ -37,7 +37,7 @@ for (const button of rejectedButtons) {
         originalStatusSpan.innerText = "Rejected";
 
         const rejected = document.getElementById("rejected-card");
-        rejected.innerText = Number(rejected.innerText) + 1;
+        rejected.innerText = parseInt(rejected.innerText) + 1;
 
         const rejectedSection = document.getElementById("Rejected");
 
@@ -63,11 +63,11 @@ interviewSection.addEventListener("click", function (event) {
 
         // Decrease interview count
         const interview = document.getElementById("interview-card");
-        interview.innerText = Number(interview.innerText) - 1;
+        interview.innerText = parseInt(interview.innerText) - 1;
 
         // Increase rejected count
         const rejected = document.getElementById("rejected-card");
-        rejected.innerText = Number(rejected.innerText) + 1;
+        rejected.innerText = parseInt(rejected.innerText) + 1;
 
         // Move card to rejected section
         const rejectedSection = document.getElementById("Rejected");
@@ -89,36 +89,31 @@ interviewSection.addEventListener("click", function (event) {
     }
 });
 
-const deletecard = document.querySelectorAll(".delete");
 document.addEventListener("click", function (event) {
-
     if (event.target.closest(".delete")) {
 
         const deleteBtn = event.target.closest(".delete");
         const clickedCard = deleteBtn.closest(".card");
+        const totalElement = document.getElementById("total");
 
         // check section before removing
         if (clickedCard.closest("#interview")) {
             const interviewCount = document.getElementById("interview-card");
             interviewCount.innerText = parseInt(interviewCount.innerText) - 1;
         }
-
-        if (clickedCard.closest("#Rejected")) {
+        else if (clickedCard.closest("#Rejected")) {
             const rejectedCount = document.getElementById("rejected-card");
             rejectedCount.innerText = parseInt(rejectedCount.innerText) - 1;
         }
-        if(clickedCard.closest("#all-part")){
+        else if (clickedCard.closest("#All")) {
             const jobs = document.getElementById("jobs");
             const currentCount = parseInt(jobs.innerText.split(" ")[1]);
             jobs.innerText = `Jobs ${currentCount - 1}`;
-        }
+            totalElement.innerText = parseInt(totalElement.innerText) - 1;
 
-        // update total
-        const totalElement = document.getElementById("total");
-        totalElement.innerText = parseInt(totalElement.innerText) - 1;
+        }
 
         // remove from UI
         clickedCard.remove();
     }
-
 });
