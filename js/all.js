@@ -109,7 +109,7 @@ document.addEventListener("click", function (event) {
         }
         if(clickedCard.closest("#all-part")){
             const jobs = document.getElementById("jobs");
-            const currentCount = parseInt(jobs.innerText.split(' ')[1]);
+            const currentCount = parseInt(jobs.innerText.split(" ")[1]);
             jobs.innerText = `Jobs ${currentCount - 1}`;
         }
 
