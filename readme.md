@@ -24,31 +24,40 @@ Question-2 :
 
 Question-3 :
 
-Event Bubbling means an event on a child element goes up to its parent elements automatically.
+## Event Bubbling means an event on a child element goes up to its parent elements automatically.
 
 Example:
 
-document.getElementById('button').addEventListener('click', function() { alert('Button clicked!'); });
+
+document.getElementById('button').addEventListener('click', function() { 
+    alert('Button clicked!'); 
+});
+
 
 Question-4 :
 
-Event Delegation means putting an event listener on a parent element to handle events for its child elements.
+## Event Delegation means putting an event listener on a parent element to handle events for its child elements.
 
 Example:
 
+
 const list = document.getElementById('list');
 
-list.addEventListener('click', function(event) { if (event.target.tagName === 'LI') { alert('You clicked on ' + event.target.innerText); } });
+list.addEventListener('click', function(event) { 
+    if (event.target.tagName === 'list') { 
+        alert('You clicked on ' + event.target.innerText); 
+    } 
+});
 
-Why useful: saves memory and code because you don’t need a separate listener for each child.
+
+Why useful: saves memory and code because you don't need a separate listener for each child.
 
 Question-5 :
 
-preventDefault() --> Stops the default action
+## preventDefault() → Stops the default action
 
 Example: event.preventDefault() prevents a link from opening
 
-stopPropagation() --> Stops the event from bubbling up to parent elements
+## stopPropagation() → Stops the event from bubbling up to parent elements
 
-Example: event.stopPropagation() prevents the parents click event from running
-
+Example: event.stopPropagation() prevents the parent's click event from running
